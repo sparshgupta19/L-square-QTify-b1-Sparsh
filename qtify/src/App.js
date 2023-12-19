@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Hero from './components/Hero/Hero';
 import {StyledEngineProvider} from "@mui/material";
 import {Outlet} from 'react-router-dom';
-import {fetchNewAlbums, fetchTopAlbums} from './api/api'
+import {fetchNewAlbums, fetchSongs, fetchTopAlbums} from './api/api'
 
 
 function App() {
@@ -19,16 +19,18 @@ function App() {
   useEffect(()=>{
     generateData("topAlbums", fetchTopAlbums);
     generateData("newAlbums", fetchNewAlbums);
+    generateData("songs", fetchSongs);
+
   },[]);
 
-const {topAlbums = [], newAlbums = []} =data;
+const {topAlbums = [], newAlbums = [], songs=[]} =data;
 
   return (
    <>
    <StyledEngineProvider injectFirst>
    <Navbar/>
    <Hero/>
-   <Outlet context={{data: {topAlbums,newAlbums}}}/>
+   <Outlet context={{data: {topAlbums,newAlbums,songs}}}/>
    </StyledEngineProvider>
    </>
   );
