@@ -10,7 +10,7 @@ function Homepage(props) {
   const {topAlbums,newAlbums,songs} = data;
 
   return<>
-    <Hero/>
+    {/* <Hero/> */}
     <div className={styles.wrapper}>
         <Section title="Top Albums" data={topAlbums} type="album"/>
         <Section title="New Albums" data={newAlbums} type="album"/>
